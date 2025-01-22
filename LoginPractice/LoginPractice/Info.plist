@@ -4,10 +4,16 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string></string>
+		<string>Urbanist</string>
 	</array>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>CFBundleExecutable</key>
+	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
+		<key>UIApplicationSupportsTabbedSceneCollection</key>
+		<false/>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 		<key>UISceneConfigurations</key>

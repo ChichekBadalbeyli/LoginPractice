@@ -37,7 +37,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3c-yK-uRp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1438.9312977099237" y="-155.63380281690141"/>
+            <point key="canvasLocation" x="1700" y="4"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="ejE-qn-Oo3">
+            <objects>
+                <viewController storyboardIdentifier="RegisterViewController" id="Qnc-fV-sUX" customClass="RegisterViewController" customModule="LoginPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3OY-UF-ctx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Pqb-wa-YL6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuz-es-T8J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2463" y="5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y7p-Jx-Hfp">

@@ -14,11 +14,11 @@ class HomeViewController: BaseController {
     let registerButton = UIButton()
     let guest = UIButton()
     let logo = UIImageView(image: UIImage(named: "Branding"))
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        
+        
     }
     
     override func configureUI() {
@@ -27,12 +27,16 @@ class HomeViewController: BaseController {
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         guest.translatesAutoresizingMaskIntoConstraints = false
         logo.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(image)
+        
         view.addSubview(loginButton)
         loginButton.backgroundColor = .black
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.setTitle("Login", for: .normal)
         loginButton.layer.cornerRadius = 8
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        
         view.addSubview(registerButton)
         registerButton.backgroundColor = .white
         registerButton.setTitleColor(.black, for: .normal)
@@ -41,12 +45,10 @@ class HomeViewController: BaseController {
         registerButton.layer.borderWidth = 1
         registerButton.layer.borderColor = UIColor.black.cgColor
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-
-        view.addSubview(guest)
         
+        view.addSubview(guest)
         guest.setTitle("Continue as a guest?", for: .normal)
         guest.setTitleColor(UIColor (red: 53 / 255, green: 194 / 255, blue: 193 / 255, alpha: 1 ), for: .normal)
-//        guest.addTarget(self, action: #selector(guestButtonTapped), for: .touchUpInside)
         view.addSubview(logo)
     }
     
@@ -80,14 +82,19 @@ class HomeViewController: BaseController {
         ])
     }
     
-
+    
 }
 extension HomeViewController {
     
     @objc func registerButtonTapped() {
-        let coordinator = CoordinatorController (navigationController: self.navigationController ?? UINavigationController())
+        let coordinator = RegisterCoordinator (navigationController: self.navigationController ?? UINavigationController())
         coordinator.start()
     }
     
+    @objc func loginButtonTapped() {
+        let coordinator = LoginCoordinator(navigationController: self.navigationController ?? UINavigationController())
+        coordinator.start()
+        
+    }
     
 }

@@ -1,25 +1,25 @@
 //
-//  LoginViewController.swift
+//  RegisterViewController.swift
 //  LoginPractice
 //
-//  Created by Chichek on 22.01.25.
+//  Created by Chichek on 23.01.25.
 //
 
 import UIKit
 
-class LoginViewController: BaseController {
+class RegisterViewController: BaseController {
     
     let welcomeLabel = UILabel()
     let usernameTextField = UITextField()
+    let emailTextField = UITextField()
     let passwordTextField = UITextField()
-    let forgotPasswordButton = UIButton()
-    let loginButton = UIButton()
-    let loginLabel = UILabel()
+    let passwordRepeatTextField = UITextField()
+    let registerButton = UIButton()
+    let registerLabel = UILabel()
     let facebookLogin = UIButton()
     let googleLogin = UIButton()
     let appleLogin = UIButton()
-    let registerButton = UIButton()
-    let eyeButton = UIButton()
+    let lpginButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
