@@ -23,7 +23,7 @@ class LoginViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
     }
     
     override func configureUI() {
@@ -148,15 +148,15 @@ class LoginViewController: BaseController {
     
     func registerButtonConfiguration() {
         let firstPart = "Don’t have an account?"
-        let secondPart = "Register Now"
+        let secondPart = " Register Now"
         let firstAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(red: 36/255, green: 40/255, blue: 44/255, alpha: 1),
-            .font: UIFont.systemFont(ofSize: 14, weight: .thin)
+            .font: UIFont.systemFont(ofSize: 15, weight: .thin)
         ]
         
         let secondAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(red: 53/255, green: 194/255, blue: 193/255, alpha: 1),
-            .font: UIFont.systemFont(ofSize: 14, weight: .semibold),
+            .font: UIFont.systemFont(ofSize: 15, weight: .semibold),
             
         ]
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
@@ -184,74 +184,54 @@ class LoginViewController: BaseController {
             welcomeLabel.widthAnchor.constraint(equalToConstant: 280),
             welcomeLabel.heightAnchor.constraint(equalToConstant: 78),
             welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
-            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22)
-        ])
-        
-        NSLayoutConstraint.activate([
+            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            
             usernameTextField.widthAnchor.constraint(equalToConstant: 331),
             usernameTextField.heightAnchor.constraint(equalToConstant: 56),
             usernameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 235),
             usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-        ])
-        
-        
-        NSLayoutConstraint.activate([
+            
             passwordTextField.widthAnchor.constraint(equalToConstant: 331),
             passwordTextField.heightAnchor.constraint(equalToConstant: 56),
             passwordTextField.topAnchor.constraint(equalTo: view.topAnchor, constant:   306),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22)
-        ])
-        
-        NSLayoutConstraint.activate([
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            
             forgotPasswordButton.widthAnchor.constraint(equalToConstant: 111),
             forgotPasswordButton.heightAnchor.constraint(equalToConstant: 17),
             forgotPasswordButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 377),
-            forgotPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 242)
-        ])
-        
-        NSLayoutConstraint.activate([
+            forgotPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 242),
+            
             loginButton.widthAnchor.constraint(equalToConstant: 331),
             loginButton.heightAnchor.constraint(equalToConstant: 56),
             loginButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 424),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22)
-        ])
-        
-        NSLayoutConstraint.activate([
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            
             loginLabel.widthAnchor.constraint(equalToConstant: 84),
             loginLabel.heightAnchor.constraint(equalToConstant: 17),
             loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 515),
-            loginLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 146)
-        ])
-        
-        NSLayoutConstraint.activate([
+            loginLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 146),
+            
             appleLogin.widthAnchor.constraint(equalToConstant: 105),
             appleLogin.heightAnchor.constraint(equalToConstant: 56),
             appleLogin.topAnchor.constraint(equalTo: view.topAnchor, constant: 554),
-            appleLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 248)
-        ])
-        
-        NSLayoutConstraint.activate([
+            appleLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 248),
+            
             facebookLogin.widthAnchor.constraint(equalToConstant: 105),
             facebookLogin.heightAnchor.constraint(equalToConstant: 56),
             facebookLogin.topAnchor.constraint(equalTo: view.topAnchor, constant: 554),
-            facebookLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22)
-        ])
-        
-        NSLayoutConstraint.activate([
+            facebookLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            
             googleLogin.widthAnchor.constraint(equalToConstant: 105),
             googleLogin.heightAnchor.constraint(equalToConstant: 56),
             googleLogin.topAnchor.constraint(equalTo: view.topAnchor, constant: 554),
-            googleLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 135)
-        ])
-        
-        NSLayoutConstraint.activate([
+            googleLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 135),
+            
             registerButton.widthAnchor.constraint(equalToConstant: 254),
             registerButton.heightAnchor.constraint(equalToConstant: 21),
             registerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 765),
             registerButton.leadingAnchor.constraint(equalTo: view
-                .leadingAnchor, constant: 61)
-        ])
-        NSLayoutConstraint.activate([
+                .leadingAnchor, constant: 61),
+            
             eyeButton.widthAnchor.constraint(equalToConstant: 22),
             eyeButton.heightAnchor.constraint(equalToConstant: 22),
             eyeButton.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),

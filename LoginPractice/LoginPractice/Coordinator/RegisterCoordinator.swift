@@ -16,7 +16,7 @@ class RegisterCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
+        let controller = RegisterViewController()
         navigationController.show(controller, sender: nil)
     }
     

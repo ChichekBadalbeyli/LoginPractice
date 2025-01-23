@@ -17,7 +17,7 @@ class LoginCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        let controller = LoginViewController()
         navigationController.show(controller, sender: nil)
     }
     

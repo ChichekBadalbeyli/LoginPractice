@@ -29,15 +29,23 @@ class HomeViewController: BaseController {
         logo.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(image)
-        
         view.addSubview(loginButton)
+        loginButtonConfiguration()
+        view.addSubview(registerButton)
+        registerButtonConfiguration()
+        view.addSubview(guest)
+        guestConfiguration()
+        view.addSubview(logo)
+    }
+    
+    func loginButtonConfiguration(){
         loginButton.backgroundColor = .black
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.setTitle("Login", for: .normal)
         loginButton.layer.cornerRadius = 8
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
-        view.addSubview(registerButton)
+    }
+    func registerButtonConfiguration() {
         registerButton.backgroundColor = .white
         registerButton.setTitleColor(.black, for: .normal)
         registerButton.setTitle("Register", for: .normal)
@@ -45,13 +53,13 @@ class HomeViewController: BaseController {
         registerButton.layer.borderWidth = 1
         registerButton.layer.borderColor = UIColor.black.cgColor
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-        
-        view.addSubview(guest)
-        guest.setTitle("Continue as a guest?", for: .normal)
-        guest.setTitleColor(UIColor (red: 53 / 255, green: 194 / 255, blue: 193 / 255, alpha: 1 ), for: .normal)
-        view.addSubview(logo)
     }
     
+    func guestConfiguration() {
+        guest.setTitle("Continue as a guest?", for: .normal)
+        guest.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        guest.setTitleColor(UIColor (red: 53 / 255, green: 194 / 255, blue: 193 / 255, alpha: 1 ), for: .normal)
+    }
     override func configureConstraent() {
         NSLayoutConstraint.activate([
             image.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
@@ -64,25 +72,24 @@ class HomeViewController: BaseController {
             logo.widthAnchor.constraint(equalToConstant: 141.13),
             logo.heightAnchor.constraint(equalToConstant: 99.03),
             
-            loginButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 591),
+            loginButton.topAnchor.constraint(equalTo: logo.topAnchor, constant: 143),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             loginButton.heightAnchor.constraint(equalToConstant: 56),
             loginButton.widthAnchor.constraint(equalToConstant: 331),
             
-            registerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 662),
+            registerButton.topAnchor.constraint(equalTo: loginButton.topAnchor, constant: 71),
             registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             registerButton.heightAnchor.constraint(equalToConstant: 56),
             registerButton.widthAnchor.constraint(equalToConstant: 331),
             
-            guest.topAnchor.constraint(equalTo: view.topAnchor, constant: 764),
+            guest.topAnchor.constraint(equalTo: registerButton.topAnchor, constant: 102),
             guest.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 121),
             guest.widthAnchor.constraint(equalToConstant: 133),
-            guest.heightAnchor.constraint(equalToConstant: 18)
+            guest.heightAnchor.constraint(equalToConstant: 18),
+            guest.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: 0)
             
         ])
     }
-    
-    
 }
 extension HomeViewController {
     
