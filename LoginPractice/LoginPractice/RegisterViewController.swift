@@ -45,24 +45,11 @@ class RegisterViewController: BaseController {
         
         view.addSubview(welcomeLabel)
         welcomeLabelConfiguration()
-//        textFieldStackView.addSubview(usernameTextField)
-//        usernameTextFieldConfiguration()
-//        textFieldStackView.addSubview(emailTextField)
-//        emailTextFieldConfiguration()
-//        textFieldStackView.addSubview(passwordTextField)
-//        passwordTextFieldConfiguration()
-//        textFieldStackView.addSubview(passwordRepeatTextField)
-//        passwordRepeatConfiguration()
         view.addSubview(registerButton)
         registerButtonConfiguration()
         view.addSubview(registerLabel)
         registerLabelConfiguration()
-//        iconView.addSubview(googleLogin)
-//        googleConfiguration()
-//        iconView.addSubview(appleLogin)
-//        appleConfiguration()
-//        iconView.addSubview(facebookLogin)
-//        facebookConfiguration()
+
         view.addSubview(loginButton)
         loginButtonConfiguration()
         view.addSubview(iconView)
@@ -75,8 +62,7 @@ class RegisterViewController: BaseController {
         welcomeLabel.text = "Hello! Register to get started"
         welcomeLabel.textColor = UIColor(red: 30 / 255, green: 35 / 255, blue: 44 / 255, alpha: 1)
         welcomeLabel.font = UIFont.systemFont(ofSize: 30, weight:.semibold)
-  //      welcomeLabel.numberOfLines = 0
-        welcomeLabel.backgroundColor = .blue
+        welcomeLabel.numberOfLines = 0
         welcomeLabel.contentMode = .scaleAspectFit
     }
     
@@ -88,7 +74,7 @@ class RegisterViewController: BaseController {
         usernameTextField.layer.borderWidth = 1
         usernameTextField.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         usernameTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 19))
-        usernameTextField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        usernameTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         usernameTextField.leftViewMode = .always
     }
     
@@ -100,7 +86,7 @@ class RegisterViewController: BaseController {
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         emailTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 19))
-        emailTextField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        emailTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         emailTextField.leftViewMode = .always
     }
     
@@ -112,7 +98,7 @@ class RegisterViewController: BaseController {
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 19))
-        passwordTextField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        passwordTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         passwordTextField.leftViewMode = .always
     }
     
@@ -124,12 +110,12 @@ class RegisterViewController: BaseController {
         passwordRepeatTextField.layer.borderWidth = 1
         passwordRepeatTextField.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         passwordRepeatTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 19))
-        passwordRepeatTextField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        passwordRepeatTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         passwordRepeatTextField.leftViewMode = .always
     }
     
     class PaddedTextField: UITextField {
-        private let padding = UIEdgeInsets(top: 18, left: 18.04, bottom: 18, right: 18)
+        private let padding = UIEdgeInsets(top: 18, left: 20, bottom: 20, right: 18)
         
         override func textRect(forBounds bounds: CGRect) -> CGRect {
             return bounds.inset(by: padding)
@@ -145,11 +131,15 @@ class RegisterViewController: BaseController {
     }
     
     func registerButtonConfiguration() {
+        var buttonConfiguration = UIButton.Configuration.filled()
+        buttonConfiguration.baseBackgroundColor = .black
+        buttonConfiguration.title = "Register"
+        buttonConfiguration.titleAlignment = .center
+        buttonConfiguration.baseForegroundColor = .white
+        buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 18, leading: 130, bottom: 18, trailing: 130)
+        registerButton.configuration = buttonConfiguration
         registerButton.layer.cornerRadius = 8
-        registerButton.backgroundColor = UIColor(red: 30/255, green: 35/255, blue: 44/255, alpha: 1)
-        registerButton.setTitle("Register", for: .normal)
-        registerButton.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
-        registerButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        registerButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .thin)
         registerButton.titleLabel?.textAlignment = .center
     }
     
@@ -160,24 +150,34 @@ class RegisterViewController: BaseController {
     }
     
     func appleConfiguration() {
-        appleLogin.backgroundColor = .white
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .white
+        config.image = UIImage(named: "apple")
         appleLogin.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         appleLogin.layer.borderWidth = 1
-        appleLogin.setImage(UIImage(named: "apple"), for: .normal)
+        config.contentInsets = NSDirectionalEdgeInsets (top: 15, leading: 40, bottom: 15, trailing: 40)
+        appleLogin.configuration = config
     }
     
     func facebookConfiguration() {
-        facebookLogin.backgroundColor = .white
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .white
+        config.image = UIImage(named: "facebook")
         facebookLogin.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         facebookLogin.layer.borderWidth = 1
-        facebookLogin.setImage(UIImage(named: "google"), for: .normal)
+        config.contentInsets = NSDirectionalEdgeInsets (top: 15, leading: 40, bottom: 15, trailing: 40)
+        facebookLogin.configuration = config
     }
     
     func googleConfiguration() {
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .white
+        config.image = UIImage(named: "google")
         googleLogin.backgroundColor = .white
         googleLogin.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         googleLogin.layer.borderWidth = 1
-        googleLogin.setImage(UIImage(named: "facebook"), for: .normal)
+        config.contentInsets = NSDirectionalEdgeInsets (top: 15, leading: 40, bottom: 15, trailing: 40)
+        googleLogin.configuration = config
     }
     
     func loginButtonConfiguration() {
@@ -185,15 +185,19 @@ class RegisterViewController: BaseController {
         let secondPart = " Login now"
         let firstAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(red: 36/255, green: 40/255, blue: 44/255, alpha: 1),
-            .font: UIFont.systemFont(ofSize: 14, weight: .thin)
+            .backgroundColor: UIColor.white,
+            .font: UIFont.systemFont(ofSize: 15, weight: .thin)
+            
         ]
         
         let secondAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(red: 53/255, green: 194/255, blue: 193/255, alpha: 1),
-            .font: UIFont.systemFont(ofSize: 14, weight: .semibold),
+            .backgroundColor: UIColor.white,
+            .font: UIFont.systemFont(ofSize: 15, weight: .semibold),
             
         ]
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        loginButton.backgroundColor = .white
         
         let firstAttributedString = NSAttributedString(string: firstPart, attributes: firstAttributes)
         let secondAttributedString = NSAttributedString(string: secondPart, attributes: secondAttributes)
@@ -204,6 +208,7 @@ class RegisterViewController: BaseController {
         
         loginButton.setAttributedTitle(fullAttributedString, for: .normal)
         loginButton.titleLabel?.textAlignment = .center
+        loginButton.titleLabel?.numberOfLines = 0
     }
     
     @objc func loginButtonTapped() {
@@ -227,9 +232,8 @@ class RegisterViewController: BaseController {
     func textFieldStackViewConfiguration() {
         textFieldStackView.axis = .vertical
         textFieldStackView.spacing = 12
-      //  textFieldStackView.distribution = .fillEqually
-        textFieldStackView.backgroundColor = .brown
-
+        textFieldStackView.distribution = .fillEqually
+        
         usernameTextFieldConfiguration()
         emailTextFieldConfiguration()
         passwordTextFieldConfiguration()
@@ -239,141 +243,41 @@ class RegisterViewController: BaseController {
         textFieldStackView.addArrangedSubview(emailTextField)
         textFieldStackView.addArrangedSubview(passwordTextField)
         textFieldStackView.addArrangedSubview(passwordRepeatTextField)
-   //     forgotPasswordButton.contentHorizontalAlignment = .right
+        //     forgotPasswordButton.contentHorizontalAlignment = .right
     }
     
-    //    override func configureConstraent() {
-    //        
-    //        NSLayoutConstraint.activate([
-    //            welcomeLabel.widthAnchor.constraint(equalToConstant: 333.55),
-    //            welcomeLabel.heightAnchor.constraint(equalToConstant: 78),
-    //            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
-    //            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22.17)
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            usernameTextField.widthAnchor.constraint(equalToConstant: 333.55),
-    //            usernameTextField.heightAnchor.constraint(equalToConstant: 56),
-    //            usernameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 235),
-    //            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22.17),
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            emailTextField.widthAnchor.constraint(equalToConstant: 333.55),
-    //            emailTextField.heightAnchor.constraint(equalToConstant: 56),
-    //            emailTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 303),
-    //            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22.17),
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            passwordTextField.widthAnchor.constraint(equalToConstant: 333.55),
-    //            passwordTextField.heightAnchor.constraint(equalToConstant: 56),
-    //            passwordTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 371),
-    //            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22.17),
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            passwordRepeatTextField.widthAnchor.constraint(equalToConstant: 333.55),
-    //            passwordRepeatTextField.heightAnchor.constraint(equalToConstant: 56),
-    //            passwordRepeatTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 439),
-    //            passwordRepeatTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22.17),
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            registerButton.widthAnchor.constraint(equalToConstant: 333),
-    //            registerButton.heightAnchor.constraint(equalToConstant: 56),
-    //            registerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 525),
-    //            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22.17)
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            registerLabel.widthAnchor.constraint(equalToConstant: 110),
-    //            registerLabel.heightAnchor.constraint(equalToConstant: 17),
-    //            registerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 616),
-    //            registerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 157.58)
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            appleLogin.widthAnchor.constraint(equalToConstant: 114),
-    //            appleLogin.heightAnchor.constraint(equalToConstant: 56),
-    //            appleLogin.topAnchor.constraint(equalTo: view.topAnchor, constant: 655),
-    //            appleLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 278.56)
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            facebookLogin.widthAnchor.constraint(equalToConstant: 114.44),
-    //            facebookLogin.heightAnchor.constraint(equalToConstant: 56),
-    //            facebookLogin.topAnchor.constraint(equalTo: view.topAnchor, constant: 655),
-    //            facebookLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32.22)
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            googleLogin.widthAnchor.constraint(equalToConstant: 114.44),
-    //            googleLogin.heightAnchor.constraint(equalToConstant: 56),
-    //            googleLogin.topAnchor.constraint(equalTo: view.topAnchor, constant: 655),
-    //            googleLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 155.4)
-    //        ])
-    //        
-    //        NSLayoutConstraint.activate([
-    //            loginButton.widthAnchor.constraint(equalToConstant: 255),
-    //            loginButton.heightAnchor.constraint(equalToConstant: 21),
-    //            loginButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 766),
-    //            loginButton.leadingAnchor.constraint(equalTo: view
-    //                .leadingAnchor, constant: 49)
-    //        ])
-    //    }
-    //}
     override func configureConstraent() {
         
         NSLayoutConstraint.activate([
             
-            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
+            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 85),
             welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22.17),
             welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -19.28),
-            welcomeLabel.bottomAnchor.constraint(equalTo: textFieldStackView.topAnchor, constant: -32),
+            //    welcomeLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -609),
             // welcome.heightAnchor.constraint(equalToConstant: 78),
             
-            textFieldStackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 32),
+            textFieldStackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 25),
             textFieldStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             textFieldStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            //textFieldStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -418),
             
-            // usernameTextField.topAnchor.constraint(equalTo: textFieldStackView.topAnchor),
-            //        usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            //        usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            //        
-            //        passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            //        passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            //
-            //        forgotPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            //        forgotPasswordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            //  forgotPasswordButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor,constant: -30),
+            registerButton.topAnchor.constraint(equalTo: passwordRepeatTextField.bottomAnchor, constant: 20),
+            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            //registerButton.bottomAnchor.constraint(equalTo: registerLabel.topAnchor, constant: -20),
+            
+            registerLabel.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 20),
+            registerLabel.centerXAnchor.constraint(equalTo: registerButton.centerXAnchor),
             
             
-            registerButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 30),
-            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            // loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -332),
-            
-            registerLabel.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 35),
-            registerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            
-            iconView.topAnchor.constraint(equalTo: registerLabel.bottomAnchor, constant: 22),
+            iconView.topAnchor.constraint(equalTo: registerLabel.bottomAnchor, constant: 10),
             iconView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            iconView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            // iconView.bottomAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: -155),
+            iconView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 22),
+            //iconView.bottomAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: -155),
             
-            //registerButton.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 50),
-            registerButton.leadingAnchor.constraint(equalTo: view
-                .leadingAnchor, constant: 61),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
-            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26),
-            
-            //        eyeButton.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
-            //        eyeButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -16),
-            //        eyeButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -17),
-            //        eyeButton.bottomAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 17)
+            loginButton.leadingAnchor.constraint(equalTo: view
+                .leadingAnchor, constant: 71),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -49),
+            loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25),
             
         ])
     }

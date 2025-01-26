@@ -116,7 +116,6 @@ class LoginViewController: BaseController {
         forgotPasswordButton.setTitle("Forget password?", for: .normal)
         forgotPasswordButton.setTitleColor(UIColor(red: 106/255, green: 112/255, blue: 124/255, alpha: 1), for: .normal)
         forgotPasswordButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-      //  forgotPasswordButton.titleLabel?.textAlignment = .center
         forgotPasswordButton.titleLabel?.numberOfLines = 0
     }
     
@@ -126,11 +125,9 @@ class LoginViewController: BaseController {
             buttonConfiguration.title = "Login"
         buttonConfiguration.titleAlignment = .center
             buttonConfiguration.baseForegroundColor = .white
-//            buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 19, leading: 147, bottom: 19, trailing: 148)
-
+        
             loginButton.configuration = buttonConfiguration
             loginButton.layer.cornerRadius = 8
-//            loginButton.titleLabel?.numberOfLines = 1
             loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
 
     }
@@ -222,7 +219,6 @@ class LoginViewController: BaseController {
     func textFieldStackViewConfiguration() {
         textFieldStackView.axis = .vertical
         textFieldStackView.spacing = 15
-      //  textFieldStackView.distribution = .fillEqually
 
         usernameTextFieldConfiguration()
         passwordTextFieldConfigure()
@@ -241,15 +237,11 @@ class LoginViewController: BaseController {
             welcome.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
             welcome.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             welcome.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -73),
-//welcome.bottomAnchor.constraint(equalTo: textFieldStackView.topAnchor, constant: -32),
-           // welcome.heightAnchor.constraint(equalToConstant: 78),
-            
+
             textFieldStackView.topAnchor.constraint(equalTo: welcome.bottomAnchor, constant: 32),
             textFieldStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             textFieldStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            //textFieldStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -418),
-            
-           // usernameTextField.topAnchor.constraint(equalTo: textFieldStackView.topAnchor),
+
             usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
             
@@ -258,13 +250,11 @@ class LoginViewController: BaseController {
 
             forgotPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             forgotPasswordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-          //  forgotPasswordButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor,constant: -30),
             
             
             loginButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 15),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-           // loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -332),
             
             loginLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
             loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -273,9 +263,7 @@ class LoginViewController: BaseController {
             iconView.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 35),
             iconView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             iconView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            // iconView.bottomAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: -155),
-            
-//registerButton.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 50),
+
             registerButton.leadingAnchor.constraint(equalTo: view
                 .leadingAnchor, constant: 61),
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),

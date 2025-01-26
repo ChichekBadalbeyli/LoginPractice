@@ -67,23 +67,19 @@ class HomeViewController: BaseController {
             image.topAnchor.constraint(equalTo: view.topAnchor),
             image.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            logo.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
+            logo.topAnchor.constraint(equalTo: view.topAnchor, constant: 420),
             logo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 117),
             logo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -116.87),
-          // logo.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -264.97),
-
             
-            loginButton.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 43.97),
+            loginButton.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 40),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-           //loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -165),
             
             registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 15),
             registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-        //  registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -94),
             
-            guest.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 46),
+            guest.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 10),
             guest.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             guest.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -30)
         ])
