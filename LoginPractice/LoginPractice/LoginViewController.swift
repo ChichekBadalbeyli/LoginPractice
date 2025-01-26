@@ -9,9 +9,9 @@ import UIKit
 
 class LoginViewController: BaseController {
     
-    let welcomeLabel = UILabel()
-    let usernameTextField = UITextField()
-    let passwordTextField = UITextField()
+    let welcome = UILabel()
+    let usernameTextField = PaddedTextField()
+    let passwordTextField = PaddedTextField()
     let forgotPasswordButton = UIButton()
     let loginButton = UIButton()
     let loginLabel = UILabel()
@@ -20,6 +20,8 @@ class LoginViewController: BaseController {
     let appleLogin = UIButton()
     let registerButton = UIButton()
     let eyeButton = UIButton()
+    let iconView = UIStackView()
+    let textFieldStackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,7 @@ class LoginViewController: BaseController {
     }
     
     override func configureUI() {
-        welcomeLabel.translatesAutoresizingMaskIntoConstraints =  false
+        welcome.translatesAutoresizingMaskIntoConstraints =  false
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
@@ -38,60 +40,67 @@ class LoginViewController: BaseController {
         appleLogin.translatesAutoresizingMaskIntoConstraints = false
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         eyeButton.translatesAutoresizingMaskIntoConstraints = false
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(welcomeLabel)
+        view.addSubview(welcome)
         welcomeLabelConfiguration()
-        view.addSubview(usernameTextField)
-        usernameTextFieldConfiguration()
-        view.addSubview(passwordTextField)
-        passwordTextFieldConfigure()
-        view.addSubview(forgotPasswordButton)
-        forgetPasswordConfiguration()
         view.addSubview(loginLabel)
         loginLabelConfiguration()
         view.addSubview(loginButton)
         loginButtonConfiguration()
-        view.addSubview(facebookLogin)
-        facebookConfiguration()
-        view.addSubview(googleLogin)
-        googleConfiguration()
-        view.addSubview(appleLogin)
-        appleConfiguration()
         view.addSubview(registerButton)
         registerButtonConfiguration()
+        view.addSubview(iconView)
+        iconViewConfigurtion()
+        view.addSubview(textFieldStackView)
+        textFieldStackViewConfiguration()
     }
     
     func welcomeLabelConfiguration() {
-        welcomeLabel.text = "Welcome back! Glad to see you, Again!"
-        welcomeLabel.textColor = UIColor(red: 30 / 255, green: 35 / 255, blue: 44 / 255, alpha: 1)
-        welcomeLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-        welcomeLabel.numberOfLines = 0
+        welcome.text = "Welcome back! Glad to see you, Again!"
+        welcome.textColor = UIColor(red: 30 / 255, green: 35 / 255, blue: 44 / 255, alpha: 1)
+        welcome.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        welcome.numberOfLines = 0
     }
     
     func usernameTextFieldConfiguration() {
         usernameTextField.placeholder = "Enter your email"
-        usernameTextField.textColor = UIColor(red: 131, green: 145, blue: 161, alpha: 1)
-        usernameTextField.backgroundColor = UIColor(red: 247 / 250, green: 248 / 250, blue: 249 / 250, alpha: 1)
+        usernameTextField.textColor = UIColor(red: 131 / 255, green: 145 / 255, blue: 161 / 255, alpha: 1)
+        usernameTextField.backgroundColor = UIColor(red: 247 / 255, green: 248 / 255, blue: 249 / 255, alpha: 1)
         usernameTextField.layer.cornerRadius = 8
         usernameTextField.layer.borderWidth = 1
-        usernameTextField.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
-        usernameTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 19))
+        usernameTextField.layer.borderColor = UIColor(red: 232 / 255, green: 236 / 255, blue: 244 / 255, alpha: 1).cgColor
         usernameTextField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        usernameTextField.leftViewMode = .always
+        usernameTextField.textColor =  .black
     }
-    
+
     func passwordTextFieldConfigure() {
         passwordTextField.placeholder = "Enter your password"
-        passwordTextField.textColor = UIColor(red: 131/250, green: 145/250, blue: 161/250, alpha: 1)
-        passwordTextField.backgroundColor = UIColor(red: 247 / 250, green: 248 / 250, blue: 249 / 250, alpha: 1)
+        passwordTextField.textColor = UIColor(red: 131 / 255, green: 145 / 255, blue: 161 / 255, alpha: 1)
+        passwordTextField.backgroundColor = UIColor(red: 247 / 255, green: 248 / 255, blue: 249 / 255, alpha: 1)
         passwordTextField.layer.cornerRadius = 8
-        passwordTextField.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
+        passwordTextField.layer.borderColor = UIColor(red: 232 / 255, green: 236 / 255, blue: 244 / 255, alpha: 1).cgColor
         passwordTextField.layer.borderWidth = 1
-        passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 19))
         passwordTextField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        passwordTextField.leftViewMode = .always
         eyeButtonConfiguration()
         view.addSubview(eyeButton)
+    }
+    
+    class PaddedTextField: UITextField {
+        private let padding = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
+        
+        override func textRect(forBounds bounds: CGRect) -> CGRect {
+            return bounds.inset(by: padding)
+        }
+        
+        override func editingRect(forBounds bounds: CGRect) -> CGRect {
+            return bounds.inset(by: padding)
+        }
+        
+        override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+            return bounds.inset(by: padding)
+        }
     }
     
     func eyeButtonConfiguration() {
@@ -106,44 +115,62 @@ class LoginViewController: BaseController {
     func forgetPasswordConfiguration() {
         forgotPasswordButton.setTitle("Forget password?", for: .normal)
         forgotPasswordButton.setTitleColor(UIColor(red: 106/255, green: 112/255, blue: 124/255, alpha: 1), for: .normal)
-        forgotPasswordButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        forgotPasswordButton.titleLabel?.textAlignment = .right
+        forgotPasswordButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+      //  forgotPasswordButton.titleLabel?.textAlignment = .center
+        forgotPasswordButton.titleLabel?.numberOfLines = 0
     }
     
     func loginButtonConfiguration() {
-        loginButton.layer.cornerRadius = 8
-        loginButton.backgroundColor = UIColor(red: 30/255, green: 35/255, blue: 44/255, alpha: 1)
-        loginButton.setTitle("Login", for: .normal)
-        loginButton.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
-        loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        loginButton.titleLabel?.textAlignment = .center
+        var buttonConfiguration = UIButton.Configuration.filled()
+            buttonConfiguration.baseBackgroundColor = .black
+            buttonConfiguration.title = "Login"
+        buttonConfiguration.titleAlignment = .center
+            buttonConfiguration.baseForegroundColor = .white
+//            buttonConfiguration.contentInsets = NSDirectionalEdgeInsets(top: 19, leading: 147, bottom: 19, trailing: 148)
+
+            loginButton.configuration = buttonConfiguration
+            loginButton.layer.cornerRadius = 8
+//            loginButton.titleLabel?.numberOfLines = 1
+            loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+
     }
     
     func loginLabelConfiguration() {
         loginLabel.text = "Or login with"
         loginLabel.textColor = UIColor(red: 106/255, green: 112/255, blue: 124/255, alpha: 1)
-        loginLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        loginLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        
     }
     
     func appleConfiguration() {
-        appleLogin.backgroundColor = .white
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .white
+        config.image = UIImage(named: "apple")
         appleLogin.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         appleLogin.layer.borderWidth = 1
-        appleLogin.setImage(UIImage(named: "apple"), for: .normal)
+        config.contentInsets = NSDirectionalEdgeInsets (top: 16.18, leading: 38.18, bottom: 16.18, trailing: 38.18)
+        appleLogin.configuration = config
     }
     
     func facebookConfiguration() {
-        facebookLogin.backgroundColor = .white
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .white
+        config.image = UIImage(named: "facebook")
         facebookLogin.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         facebookLogin.layer.borderWidth = 1
-        facebookLogin.setImage(UIImage(named: "google"), for: .normal)
+        config.contentInsets = NSDirectionalEdgeInsets (top: 16.18, leading: 38.18, bottom: 16.18, trailing: 38.18)
+        facebookLogin.configuration = config
     }
     
     func googleConfiguration() {
+        var config = UIButton.Configuration.filled()
+        config.baseBackgroundColor = .white
+        config.image = UIImage(named: "google")
         googleLogin.backgroundColor = .white
         googleLogin.layer.borderColor = UIColor(red: 232/255, green: 236/255, blue: 244/255, alpha: 1).cgColor
         googleLogin.layer.borderWidth = 1
-        googleLogin.setImage(UIImage(named: "facebook"), for: .normal)
+        config.contentInsets = NSDirectionalEdgeInsets (top: 16.18, leading: 38.18, bottom: 16.18, trailing: 38.18)
+        googleLogin.configuration = config
     }
     
     func registerButtonConfiguration() {
@@ -170,6 +197,7 @@ class LoginViewController: BaseController {
         
         registerButton.setAttributedTitle(fullAttributedString, for: .normal)
         registerButton.titleLabel?.textAlignment = .center
+        registerButton.titleLabel?.numberOfLines = 0
     }
     
     @objc func registerButtonTapped() {
@@ -177,65 +205,87 @@ class LoginViewController: BaseController {
         coordinator.start()
     }
     
+    func  iconViewConfigurtion() {
+        iconView.axis = .horizontal
+        iconView.spacing = 8
+        iconView.distribution = .fillEqually
+        
+        appleConfiguration()
+        facebookConfiguration()
+        googleConfiguration()
+        
+        iconView.addArrangedSubview(appleLogin)
+        iconView.addArrangedSubview(facebookLogin)
+        iconView.addArrangedSubview(googleLogin)
+    }
+    
+    func textFieldStackViewConfiguration() {
+        textFieldStackView.axis = .vertical
+        textFieldStackView.spacing = 15
+      //  textFieldStackView.distribution = .fillEqually
+
+        usernameTextFieldConfiguration()
+        passwordTextFieldConfigure()
+        forgetPasswordConfiguration()
+        
+        textFieldStackView.addArrangedSubview(usernameTextField)
+        textFieldStackView.addArrangedSubview(passwordTextField)
+        textFieldStackView.addArrangedSubview(forgotPasswordButton)
+        forgotPasswordButton.contentHorizontalAlignment = .right
+    }
     
     override func configureConstraent() {
         
         NSLayoutConstraint.activate([
-            welcomeLabel.widthAnchor.constraint(equalToConstant: 280),
-            welcomeLabel.heightAnchor.constraint(equalToConstant: 78),
-            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
-            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
             
-            usernameTextField.widthAnchor.constraint(equalToConstant: 331),
-            usernameTextField.heightAnchor.constraint(equalToConstant: 56),
-            usernameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 235),
+            welcome.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
+            welcome.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            welcome.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -73),
+//welcome.bottomAnchor.constraint(equalTo: textFieldStackView.topAnchor, constant: -32),
+           // welcome.heightAnchor.constraint(equalToConstant: 78),
+            
+            textFieldStackView.topAnchor.constraint(equalTo: welcome.bottomAnchor, constant: 32),
+            textFieldStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            textFieldStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+            //textFieldStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -418),
+            
+           // usernameTextField.topAnchor.constraint(equalTo: textFieldStackView.topAnchor),
             usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
             
-            passwordTextField.widthAnchor.constraint(equalToConstant: 331),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 56),
-            passwordTextField.topAnchor.constraint(equalTo: view.topAnchor, constant:   306),
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+
+            forgotPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            forgotPasswordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+          //  forgotPasswordButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor,constant: -30),
             
-            forgotPasswordButton.widthAnchor.constraint(equalToConstant: 111),
-            forgotPasswordButton.heightAnchor.constraint(equalToConstant: 17),
-            forgotPasswordButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 377),
-            forgotPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 242),
             
-            loginButton.widthAnchor.constraint(equalToConstant: 331),
-            loginButton.heightAnchor.constraint(equalToConstant: 56),
-            loginButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 424),
+            loginButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 15),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+           // loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -332),
             
-            loginLabel.widthAnchor.constraint(equalToConstant: 84),
-            loginLabel.heightAnchor.constraint(equalToConstant: 17),
-            loginLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 515),
-            loginLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 146),
+            loginLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
+            loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            appleLogin.widthAnchor.constraint(equalToConstant: 105),
-            appleLogin.heightAnchor.constraint(equalToConstant: 56),
-            appleLogin.topAnchor.constraint(equalTo: view.topAnchor, constant: 554),
-            appleLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 248),
             
-            facebookLogin.widthAnchor.constraint(equalToConstant: 105),
-            facebookLogin.heightAnchor.constraint(equalToConstant: 56),
-            facebookLogin.topAnchor.constraint(equalTo: view.topAnchor, constant: 554),
-            facebookLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            iconView.topAnchor.constraint(equalTo: loginLabel.bottomAnchor, constant: 35),
+            iconView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            iconView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+            // iconView.bottomAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: -155),
             
-            googleLogin.widthAnchor.constraint(equalToConstant: 105),
-            googleLogin.heightAnchor.constraint(equalToConstant: 56),
-            googleLogin.topAnchor.constraint(equalTo: view.topAnchor, constant: 554),
-            googleLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 135),
-            
-            registerButton.widthAnchor.constraint(equalToConstant: 254),
-            registerButton.heightAnchor.constraint(equalToConstant: 21),
-            registerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 765),
+//registerButton.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 50),
             registerButton.leadingAnchor.constraint(equalTo: view
                 .leadingAnchor, constant: 61),
+            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26),
             
-            eyeButton.widthAnchor.constraint(equalToConstant: 22),
-            eyeButton.heightAnchor.constraint(equalToConstant: 22),
             eyeButton.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
-            eyeButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -16)
+            eyeButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -16),
+            eyeButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -17),
+            eyeButton.bottomAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 17)
+            
         ])
     }
 }

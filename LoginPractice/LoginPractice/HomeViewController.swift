@@ -57,37 +57,35 @@ class HomeViewController: BaseController {
     
     func guestConfiguration() {
         guest.setTitle("Continue as a guest?", for: .normal)
-        guest.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        guest.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         guest.setTitleColor(UIColor (red: 53 / 255, green: 194 / 255, blue: 193 / 255, alpha: 1 ), for: .normal)
     }
     override func configureConstraent() {
         NSLayoutConstraint.activate([
-            image.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            image.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            image.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            image.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            image.topAnchor.constraint(equalTo: view.topAnchor),
+            image.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            logo.topAnchor.constraint(equalTo: view.topAnchor, constant: 448),
+            logo.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
             logo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 117),
-            logo.widthAnchor.constraint(equalToConstant: 141.13),
-            logo.heightAnchor.constraint(equalToConstant: 99.03),
+            logo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -116.87),
+          // logo.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -264.97),
+
             
-            loginButton.topAnchor.constraint(equalTo: logo.topAnchor, constant: 143),
+            loginButton.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 43.97),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            loginButton.heightAnchor.constraint(equalToConstant: 56),
-            loginButton.widthAnchor.constraint(equalToConstant: 331),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+           //loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -165),
             
-            registerButton.topAnchor.constraint(equalTo: loginButton.topAnchor, constant: 71),
+            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 15),
             registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            registerButton.heightAnchor.constraint(equalToConstant: 56),
-            registerButton.widthAnchor.constraint(equalToConstant: 331),
+            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+        //  registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -94),
             
-            guest.topAnchor.constraint(equalTo: registerButton.topAnchor, constant: 102),
-            guest.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 121),
-            guest.widthAnchor.constraint(equalToConstant: 133),
-            guest.heightAnchor.constraint(equalToConstant: 18),
-            guest.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: 0)
-            
+            guest.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 46),
+            guest.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            guest.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -30)
         ])
     }
 }
